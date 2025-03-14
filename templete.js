@@ -71,10 +71,10 @@ socialMedia.then(function(data) {
         return {min, q1, median, q3, max};
     };
     
-    // Group data by species category & find q1,median,q2,q3,max for each group
+    // Group data by category and find the quartiles (Q1, Q2, Q3, median, max) for each group
     const quantilesByGroups = d3.rollup(data, rollupFunction, d => d.Platform);
     
-    // Go over each group & find quartiles (find x axis position & width of each box by finding bandwithof Xscale)
+    // Go over each category group and find positions & width for each box by getting the band width of Xscale
     quantilesByGroups.forEach((quantiles, Platform) => {
         const x = xScale(Platform);
         const boxWidth = xScale.bandwidth();
